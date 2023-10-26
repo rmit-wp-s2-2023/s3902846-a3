@@ -46,7 +46,7 @@ if (isset($_GET['staffID'])) {
     <footer>
         <div class id="sitemap-buttons">
             <h2>Sitemap</h2>
-            <ul>
+            <ul class="no-bullets">
                 <li><a href="index.php" class="button home-button">View All Staff</a></li>
                 <li><a href="create.php" class="button create-button">Create Course</a></li>
                 <li><a href="https://github.com/rmit-wp-s2-2023/s3902846-a3" class="button github-repo-button" target="_blank">GitHub Repository</a></li>
