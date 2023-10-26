@@ -1,3 +1,4 @@
+/* body */
 body, h1, h2, ul, li, a {
     margin: 0px;
     padding: 0;
@@ -10,43 +11,23 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #292929;
     color: white;
     text-align: center;
     padding: 10px;
 }
 
-nav ul {
-    list-style: none;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #333;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
+/* sitemap buttons */
 
 footer {
-    background-color: #333;
+    background-color: #292929;
     color: white;
     text-align: center;
     padding: 10px;
 }
 
-
-.buttons {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  transform: translateY(0);
+#sitemap-buttons li {
+    margin: 5px; 
 }
 
 .button {
@@ -83,10 +64,22 @@ footer {
 }
 
 .button.create-button:hover {
-    background-color: #ffffcc(255, 193, 193);
-    color: white;
+    background-color: #ffffd6(255, 193, 193);
+    color: rgb(187, 187, 187);
 }
 
+.button.create-course-button {
+    background-color: #ff8686;
+    color: white;
+    border: 2px solid #ff8686;
+}
+
+.button.create-course-button:hover {
+    background-color: rgb(255, 196, 196);
+    color: rgb(255, 104, 104);
+}
+
+/* staff information */
 .staff-info-container {
   background-color: rgba(255, 255, 255, 0.2);
   padding: 20px;
@@ -99,6 +92,55 @@ footer {
   margin-bottom: 50px; 
 }
 
+.text-left {
+    float: left;
+    margin-right: 10px;
+}
+
 .no-bullets {
     list-style: none;
 }
+
+/* create course */
+.create-course-container {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 50px; 
+    margin-bottom: 50px; 
+}
+
+form label {
+    display: block;
+    text-align: left;
+    width: 150px; 
+    margin-right: 10px; 
+}
+
+form input[type="text"] {
+    width: 250px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+}
+
+.form-group label {
+    width: 150px; 
+    text-align: right;
+    margin-right: 10px; 
+}
+
+.form-group input {
+    width: 100%; 
+}
+
+
+
