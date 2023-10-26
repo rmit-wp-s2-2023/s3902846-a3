@@ -1,3 +1,30 @@
+<?php
+require_once 'functions.php';
+
+$courseID = $title = $creditPoints = $career = "";
+$courseIDErr = $titleErr = $creditPointsErr = $careerErr = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $courseID = $_POST["courseID"];
+    $title = $_POST["title"];
+    $creditPoints = $_POST["creditPoints"];
+    $career = $_POST["career"];
+
+    $courseIDErr = validateCourseID($courseID);
+    $titleErr = validateTitle($title);
+    $creditPointsErr = validateCreditPoints($creditPoints);
+    $careerErr = validateCareer($career);
+
+    $errorMessages = formatErrorMessages($courseIDErr, $titleErr, $creditPointsErr, $careerErr);
+
+    if (!empty($errorMessages)) {
+    } else {
+        header("Location: index.php");
+        exit();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,28 +39,6 @@
     </header>
     <section class="create-course-container">
         <h2>Create a Course</h2>
-        <?php
-        require_once 'functions.php';
-
-        $courseID = $title = $creditPoints = $career = "";
-        $courseIDErr = $titleErr = $creditPointsErr = $careerErr = "";
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $courseID = $_POST["courseID"];
-            $title = $_POST["title"];
-            $creditPoints = $_POST["creditPoints"];
-            $career = $_POST["career"];
-            $courseIDErr = validateCourseID($courseID);
-            $titleErr = validateTitle($title);
-            $creditPointsErr = validateCreditPoints($creditPoints);
-            $careerErr = validateCareer($career);
-
-            if (empty($courseIDErr) && empty($titleErr) && empty($creditPointsErr) && empty($careerErr)) {
-                header("Location: index.php");
-                exit();
-            }
-        }
-        ?>
         <form method="POST" action="create.php" class="create-course-container">
             <div class="form-group">
                 <label for="courseID">Course ID:</label>
@@ -47,7 +52,7 @@
 
             <div class="form-group">
                 <label for="creditPoints">Credit Points:</label>
-                <input type="text" id="creditPoints" name "creditPoints" value="<?php echo $creditPoints; ?>">
+                <input type="text" id="creditPoints" name="creditPoints" value="<?php echo $creditPoints; ?>">
             </div>
 
             <div class="form-group">
@@ -57,6 +62,13 @@
 
             <input type="submit" value="Create Course" class="button create-course-button">
         </form>
+        <div class="error-messages">
+            <?php
+            if (!empty($errorMessages)) {
+                echo $errorMessages;
+            }
+            ?>
+        </div>
     </section>
     <footer>
         <div class id="sitemap-buttons">
