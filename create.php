@@ -1,13 +1,27 @@
 <?php
 require_once 'functions.php';
 
-if (isset($_GET['staffID'])) {
-    $staffID = $_GET['staffID'];
-    $webServiceURL = 'https://titan.csit.rmit.edu.au/~e103884/wp/.services/.staff/?id=' . $staffID;
-    $staffData = json_decode(file_get_contents($webServiceURL), true);
-} else {
-    echo 'Invalid request. Please provide a staffID.';
-    exit();
+$courseID = $title = $creditPoints = $career = "";
+$courseIDErr = $titleErr = $creditPointsErr = $careerErr = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $courseID = $_POST["courseID"];
+    $title = $_POST["title"];
+    $creditPoints = $_POST["creditPoints"];
+    $career = $_POST["career"];
+
+    $courseIDErr = validateCourseID($courseID);
+    $titleErr = validateTitle($title);
+    $creditPointsErr = validateCreditPoints($creditPoints);
+    $careerErr = validateCareer($career);
+
+    $errorMessages = formatErrorMessages($courseIDErr, $titleErr, $creditPointsErr, $careerErr);
+
+    if (!empty($errorMessages)) {
+    } else {
+        header("Location: index.php");
+        exit();
+    }
 }
 ?>
 
@@ -17,31 +31,44 @@ if (isset($_GET['staffID'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="a3.css">
-    <title>Courses</title>
+    <title>Create Course</title>
 </head>
 <body>
     <header>
-        <h1>Courses</h1>
+        <h1>Create Course</h1>
     </header>
-    <section class="course-info-container">
-        <?php
-        if ($staffData) {
-            echo '<h2>Staff ' . $staffID . '</h2>';
-            echo '<ul class="no-bullets">';
-            foreach ($staffData['courses'] as $course) {
-                echo '<li>';
-                echo '<span class="text-left">Course ID: ' . $course['courseID'] . '</span><br>';
-                echo '<span class="text-left">Title: ' . $course['title'] . '</span><br>';
-                echo '<span class="text-left">Credit Points: ' . $course['creditPoints'] . '</span><br>';
-                echo '<span class="text-left">Career: ' . $course['career'] . '</span><br>';
-                echo '<span class="text-left">Coordinator: ' . $course['coordinator'] . '</span><br><br>';
-                echo '</li>';
+    <section class="create-course-container">
+        <h2>Create a Course</h2>
+        <form method="POST" action="create.php" class="create-course-container">
+            <div class="form-group">
+                <label for="courseID">Course ID:</label>
+                <input type="text" id="courseID" name="courseID" value="<?php echo $courseID; ?>">
+            </div>
+
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" value="<?php echo $title; ?>">
+            </div>
+
+            <div class="form-group">
+                <label for="creditPoints">Credit Points:</label>
+                <input type="text" id="creditPoints" name="creditPoints" value="<?php echo $creditPoints; ?>">
+            </div>
+
+            <div class="form-group">
+                <label for="career">Career:</label>
+                <input type="text" id="career" name="career" value="<?php echo $career; ?>">
+            </div>
+
+            <input type="submit" value="Create Course" class="button create-course-button">
+        </form>
+        <div class="error-messages">
+            <?php
+            if (!empty($errorMessages)) {
+                echo $errorMessages;
             }
-            echo '</ul>';
-        } else {
-            echo 'Failed to fetch staff course information.';
-        }
-        ?>
+            ?>
+        </div>
     </section>
     <footer>
         <div class id="sitemap-buttons">
