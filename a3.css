@@ -142,5 +142,11 @@ form input[type="text"] {
     width: 100%; 
 }
 
+.error-messages {
+    display: block;
+    color: rgb(255, 99, 99);
+    font-size: 14px;
+    text-align: left;
+    margin-top: 5px; 
 
-
+}
