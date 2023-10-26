@@ -59,26 +59,32 @@ footer {
 }
 
 .button.home-button {
-  background-color: #ff8686;
-  color: white;
-  border: 2px solid #ff8686;
+    background-color: #ff8686;
+    color: white;
+    border: 2px solid #ff8686;
 }
 
 .button.github-repo-button {
     background-color: #ff8686;
     color: white;
     border: 2px solid #ff8686;
-  }
-
-.button.create-button {
-  background-color: #ffff00;
-  color: black;
-  border: 2px solid #ffff00;
 }
 
-.button.contact-button:hover {
-  background-color: black;
-  color: white;
+.button.create-button {
+    background-color: #ffff00;
+    color: black;
+    border: 2px solid #ffff00;
+}
+
+.button.home-button:hover,
+.button.github-repo-button:hover{
+    background-color: rgb(255, 193, 193);
+    color: white;
+}
+
+.button.create-button:hover {
+    background-color: #ffffcc(255, 193, 193);
+    color: white;
 }
 
 .staff-info-container {
