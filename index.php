@@ -23,7 +23,7 @@ require_once 'functions.php';
                 echo '<ul class="no-bullets">';
                 foreach ($staffData as $staff) {
                     echo '<li>';
-                    echo '<span class="text-left">Staff ID: ' . $staff['staffID'] . '</span><br>';
+                    echo '<br><span class="text-left">Staff ID: ' . $staff['staffID'] . '</span><br>';
                     echo '<span class="text-left">First Name: ' . $staff['firstName'] . '</span><br>';
                     echo '<span class="text-left">Last Name: ' . $staff['lastName'] . '</span><br>';
                     echo '<span class="text-left">Email: ' . $staff['email'] . '</span><br><br>';
@@ -42,7 +42,7 @@ require_once 'functions.php';
     <footer>
         <div class id="sitemap-buttons">
             <h2>Sitemap</h2>
-            <ul>
+            <ul class="no-bullets">
                 <li><a href="index.php" class="button home-button">View All Staff</a></li>
                 <li><a href="create.php" class="button create-button">Create Course</a></li>
                 <li><a href="https://github.com/rmit-wp-s2-2023/s3902846-a3"  class="button github-repo-button" target="_blank">GitHub Repository</a></li>
