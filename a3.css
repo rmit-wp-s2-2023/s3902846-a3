@@ -106,14 +106,22 @@ footer {
 .create-course-container {
     background-color: rgba(255, 255, 255, 0.2);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 30px;
     width: 80%;
     max-width: 400px;
     text-align: center;
     margin: 0 auto;
     margin-top: 50px; 
     margin-bottom: 50px; 
+
 }
+
+.create-course-container input[type="text"] {
+    border-radius: 15px; 
+    padding: 5px; 
+    border: 2px solid #ff8686;
+}
+
 
 form label {
     display: block;
@@ -154,9 +162,9 @@ form input[type="text"] {
 
 /* view courses button*/
 
-.button.view-courses-button:hover {
-    background-color: #ffffd6(255, 193, 193);
-    color: rgb(187, 187, 187);
+.button.view-courses-button:hover{
+    background-color: rgb(255, 193, 193);
+    color: white;
 }
 
 .button.view-courses-button {
